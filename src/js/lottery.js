@@ -21,7 +21,7 @@ export const populateNumbersSection = () => {
   addEventListenersToNumbers();
 };
 
-const selectNumber = number => {
+const onNumberSelect = number => {
   const selectedNumber = parseInt(number.getAttribute('value'));
   if (!SELECTED_NUMBERS.includes(selectedNumber)) {
     if (SELECTED_NUMBERS.length === SELECTED_MAX_LENGTH) return;
@@ -31,15 +31,14 @@ const selectNumber = number => {
     number.classList.remove('selected');
     SELECTED_NUMBERS = SELECTED_NUMBERS.filter(n => n !== selectedNumber);
   }
-  console.log(SELECTED_NUMBERS);
   updateIndicator(SELECTED_MAX_LENGTH - SELECTED_NUMBERS.length);
 };
 
 const addEventListenersToNumbers = () => {
   const numbers = Array.from(document.querySelectorAll('.number'));
   numbers.forEach(number =>
-    number.addEventListener('click', function() {
-      selectNumber(number);
+    number.addEventListener('click', () => {
+      onNumberSelect(number);
     })
   );
 };
