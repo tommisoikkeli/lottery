@@ -1,5 +1,6 @@
 body {
   height: 100%;
+  font-family: 'Work Sans', sans-serif;
 }
 
 .main-container {
@@ -14,6 +15,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 650px;
+  margin-bottom: 35px;
 }
 
 .numbers-texts {
@@ -55,4 +57,50 @@ body {
 
 .selected:hover {
   background: #80fb6a;
+}
+
+.button {
+  width: 100px;
+  padding: 10px;
+  background: white;
+  color: #5555dc;
+  border: 1px solid #5555dc;
+  border-radius: 0px;
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.button:hover {
+  background: #f9fcfd;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  background: #ffffff;
+  border: 1px solid #a0a0a0;
+  color: #a0a0a0;
+  opacity: 0.6;
+}
+
+.lottery-results {
+  display: none;
+  margin-top: 20px;
+}
+
+.lottery-numbers {
+  display: flex;
+  width: 500px;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 15px;
+  border: 5px solid #ffc875;
+  border-radius: 30px;
+}
+
+.lottery-number {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #d4d4d4;
 }
