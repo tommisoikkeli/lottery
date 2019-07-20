@@ -4,10 +4,9 @@ const SELECTED_MAX_LENGTH = 7;
 let SELECTED_NUMBERS = [];
 let lotteryGenerated = false;
 
+// Get numbers from 1 to 40.
 const getNumbers = () => {
   const numbers = [];
-
-  // Get numbers from 1 to 40.
   for (let i = MIN_NUMBER; i <= MAX_NUMBER; i++) {
     numbers.push(i);
   }
@@ -55,6 +54,7 @@ const addEventListenersToNumbers = () => {
   );
 };
 
+// Tells how many numbers are left to select.
 const updateIndicator = number => {
   const indicator = document.getElementById('left-indicator');
   indicator.innerHTML =
@@ -64,6 +64,7 @@ const updateIndicator = number => {
 const shouldEnableButton = () =>
   SELECTED_NUMBERS.length === SELECTED_MAX_LENGTH;
 
+// Enables button when all seven numbers are selected.
 const setButtonStatus = () => {
   const button = document.getElementById('lottery-button');
   shouldEnableButton() ? (button.disabled = false) : (button.disabled = true);
