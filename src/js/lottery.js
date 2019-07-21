@@ -2,6 +2,7 @@ const MIN_NUMBER = 1;
 const MAX_NUMBER = 40;
 const SELECTED_MAX_LENGTH = 7;
 let SELECTED_NUMBERS = [];
+let LOTTERY_NUMBERS = [];
 let lotteryGenerated = false;
 
 // Get numbers from 1 to 40.
@@ -73,9 +74,60 @@ const setButtonStatus = () => {
 const showLotteryNumberContainer = () => {
   const container = document.getElementById('results');
   container.style.display = 'block';
-}
+};
+
+const getRandomNumber = () =>
+  Math.floor(Math.random() * MAX_NUMBER) + MIN_NUMBER;
+
+const generateLotteryNumbers = () => {
+  while (LOTTERY_NUMBERS.length < 7) {
+    const number = getRandomNumber();
+    if (!LOTTERY_NUMBERS.includes(number)) {
+      LOTTERY_NUMBERS = [...LOTTERY_NUMBERS, number];
+    }
+  }
+  return LOTTERY_NUMBERS;
+};
+
+const revealLotteryNumbers = lotteryNumbers => {
+  const numberBalls = Array.from(document.querySelectorAll('.lottery-number'));
+  numberBalls.forEach((ball, i) => {
+    setTimeout(() => {
+      ball.innerHTML = lotteryNumbers[i];
+      ball.classList.add('revealed');
+
+      // Show winning text after all numbers are revealed.
+      if (i === numberBalls.length - 1) {
+        showWinText();
+      }
+    }, i * 500);
+  });
+};
 
 export const onLotteryButtonClick = () => {
   lotteryGenerated = true;
   showLotteryNumberContainer();
+  revealLotteryNumbers(generateLotteryNumbers());
+};
+
+const getWinText = winnings => {
+  const winTexts = {
+    0: 'You got 0 correct numbers. Unlucky.',
+    1: 'You got 1 correct number. Not exactly impressive.',
+    2: 'You got 2 correct numbers. Not bad, not great.',
+    3: 'You got 3 correct numbers. Consider yourself lucky.',
+    4: 'You got 4 correct numbers. Good for you!',
+    5: 'You got 5 correct numbers. Actually quite impressive.',
+    6: 'Yoi got 6 correct numbers. Seriously lucky.',
+    7: 'You got ALL the correct numbers. No way.'
+  };
+  return winTexts[winnings];
+};
+
+const checkWinnings = () =>
+  SELECTED_NUMBERS.filter(n => LOTTERY_NUMBERS.includes(n)).length;
+
+export const showWinText = () => {
+  document.getElementById('winnings').style.display = 'flex'
+  document.getElementById('win-text').innerHTML = getWinText(checkWinnings())
 }
