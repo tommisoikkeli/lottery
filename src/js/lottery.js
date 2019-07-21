@@ -114,8 +114,8 @@ export const onLotteryButtonClick = () => {
 const getWinText = winnings => {
   const winTexts = {
     0: 'You got 0 correct numbers. Unlucky.',
-    1: 'You got 1 correct number. Not exactly impressive.',
-    2: 'You got 2 correct numbers. Not bad, not great.',
+    1: 'You got 1 correct number. Not very lucky.',
+    2: 'You got 2 correct numbers. Not great, not terrible.',
     3: 'You got 3 correct numbers. Consider yourself lucky.',
     4: 'You got 4 correct numbers. Good for you!',
     5: 'You got 5 correct numbers. Actually quite impressive.',
