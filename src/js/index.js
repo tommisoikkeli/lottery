@@ -1,4 +1,4 @@
-import { populateNumbersSection, onLotteryButtonClick, showWinText } from './lottery';
+import { populateNumbersSection, onLotteryButtonClick } from './lottery';
 
 populateNumbersSection();
 
