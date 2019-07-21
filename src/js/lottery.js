@@ -1,6 +1,7 @@
 const MIN_NUMBER = 1;
 const MAX_NUMBER = 40;
 const SELECTED_MAX_LENGTH = 7;
+const TIMEOUT = 500;
 let SELECTED_NUMBERS = [];
 let LOTTERY_NUMBERS = [];
 let lotteryGenerated = false;
@@ -80,7 +81,7 @@ const getRandomNumber = () =>
   Math.floor(Math.random() * MAX_NUMBER) + MIN_NUMBER;
 
 const generateLotteryNumbers = () => {
-  while (LOTTERY_NUMBERS.length < 7) {
+  while (LOTTERY_NUMBERS.length < SELECTED_MAX_LENGTH) {
     const number = getRandomNumber();
     if (!LOTTERY_NUMBERS.includes(number)) {
       LOTTERY_NUMBERS = [...LOTTERY_NUMBERS, number];
@@ -100,7 +101,7 @@ const revealLotteryNumbers = lotteryNumbers => {
       if (i === numberBalls.length - 1) {
         showWinText();
       }
-    }, i * 500);
+    }, i * TIMEOUT);
   });
 };
 
