@@ -127,7 +127,7 @@ const getWinText = winnings => {
 const checkWinnings = () =>
   SELECTED_NUMBERS.filter(n => LOTTERY_NUMBERS.includes(n)).length;
 
-export const showWinText = () => {
+const showWinText = () => {
   document.getElementById('winnings').style.display = 'flex'
   document.getElementById('win-text').innerHTML = getWinText(checkWinnings())
 }
