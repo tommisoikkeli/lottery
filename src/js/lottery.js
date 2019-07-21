@@ -118,7 +118,7 @@ const getWinText = winnings => {
     3: 'You got 3 correct numbers. Consider yourself lucky.',
     4: 'You got 4 correct numbers. Good for you!',
     5: 'You got 5 correct numbers. Actually quite impressive.',
-    6: 'Yoi got 6 correct numbers. Seriously lucky.',
+    6: 'You got 6 correct numbers. Seriously lucky.',
     7: 'You got ALL the correct numbers. No way.'
   };
   return winTexts[winnings];
